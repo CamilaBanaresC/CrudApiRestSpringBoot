@@ -15,8 +15,8 @@ public class MedicoController {
 	
 	@PostMapping
 	public void registrarMedico( @RequestBody RequestRegistroMedico json) {
-		System.out.println("(Comienza el registro de medico)");
-		System.out.println("(RequestRegistroMedico)"+ json);
+		System.out.println("***(Comienza el registro de medico)***");
+		System.out.println("***(RequestRegistroMedico)***"+ json);
 
 	}
 }
