@@ -15,7 +15,7 @@ import lombok.NoArgsConstructor;
 import med.voll.api.RequestRecord.RequestRegistroMedico;
 import med.voll.api.direccion.direccion.Direccion;
 @Table(name = "medicos")
-@Entity (name ="medico")
+@Entity (name ="Medico")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
