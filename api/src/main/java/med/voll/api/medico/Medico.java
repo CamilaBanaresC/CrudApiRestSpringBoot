@@ -25,7 +25,8 @@ public class Medico {
 @Id
 @GeneratedValue (strategy = GenerationType.IDENTITY)
 private Long id;
-private String nombres;
+private String nombre;
+private String telefono;
 private String email;
 private String documento;
 @Enumerated(EnumType.STRING)
@@ -34,7 +35,9 @@ private Especialidad especialidad;
 private Direccion direccion;
 
 public Medico(RequestRegistroMedico jsonRegistroMedico) {
-	this.nombres =jsonRegistroMedico.nombre();
+	this.nombre =jsonRegistroMedico.nombre();
+	this.telefono =jsonRegistroMedico.telefono();
+
 	this.email =jsonRegistroMedico.email();
 	this.documento =jsonRegistroMedico.documento();
 	this.especialidad =jsonRegistroMedico.especialidad();
