@@ -16,6 +16,7 @@ import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import med.voll.api.RequestRecord.RequestActualizarRegistroMedico;
 import med.voll.api.RequestRecord.RequestRegistroMedico;
 import med.voll.api.direccion.direccion.Direccion;
 
@@ -61,4 +62,19 @@ public class Medico {
         this.direccion = new Direccion(jsonRegistroMedico.direccion());
     }
 
+	public void actualizarDatos(RequestActualizarRegistroMedico requestActualizarRegistroMedico) {
+       if( requestActualizarRegistroMedico.nombre() != null) {
+   		this.nombre = requestActualizarRegistroMedico.nombre();
+
+       }
+       if(requestActualizarRegistroMedico.documento() != null) {
+           this.documento = requestActualizarRegistroMedico.documento();
+
+       }
+       if(requestActualizarRegistroMedico.direccion() != null) {
+        this.direccion = direccion.actualizarDato(requestActualizarRegistroMedico.direccion());
+
+	}
+
+ }
 }
