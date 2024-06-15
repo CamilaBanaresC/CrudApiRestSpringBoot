@@ -40,7 +40,9 @@ public class MedicoController {
 	
 	@GetMapping
 	public Page<DatosListadoMedicoDTO>  listadoDeMedicos(Pageable paginacion){
-		return medicoRepository.findAll(paginacion).map(DatosListadoMedicoDTO::new) ; 
+		//return medicoRepository.findAll(paginacion).map(DatosListadoMedicoDTO::new) ; 
+		return medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedicoDTO::new) ; 
+
 	} 
 	
 	
@@ -55,8 +57,14 @@ public class MedicoController {
 	@Transactional
 	public void eliminarMecido(@PathVariable  Long id) {
 	Medico medico = medicoRepository.getReferenceById(id);
-	medicoRepository.delete(medico);
+	medico.desactivarMedico();
 	}
 	
+//	@DeleteMapping("/{id}") //Valor enviado desde el path en insomnia o postman
+//	@Transactional
+//	public void eliminarMecido(@PathVariable  Long id) {
+//	Medico medico = medicoRepository.getReferenceById(id);
+//	medicoRepository.delete(medico);
+//	}
 	
 }

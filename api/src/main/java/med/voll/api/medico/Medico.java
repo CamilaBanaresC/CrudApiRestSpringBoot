@@ -52,8 +52,11 @@ public class Medico {
 
     @Embedded
     private Direccion direccion;
+    
+    private Boolean activo ;
 
     public Medico(RequestRegistroMedico jsonRegistroMedico) {
+        this.activo = true;
         this.nombre = jsonRegistroMedico.nombre();
         this.telefono = jsonRegistroMedico.telefono();
         this.email = jsonRegistroMedico.email();
@@ -77,4 +80,8 @@ public class Medico {
 	}
 
  }
+
+	public void desactivarMedico() {
+		this.activo = false;
+	}
 }
