@@ -1,10 +1,9 @@
 package med.voll.api.controller;
 
-import java.util.List;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -20,7 +19,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import med.voll.api.RequestRecord.RequestActualizarRegistroMedico;
 import med.voll.api.RequestRecord.RequestRegistroMedico;
-import med.voll.api.medico.DatosListadoMedicoDTO;
+import med.voll.api.medico.ResponseListadoMedico;
 import med.voll.api.medico.Medico;
 import med.voll.api.medico.MedicoRepository;
 @RestController
@@ -39,9 +38,9 @@ public class MedicoController {
 	}
 	
 	@GetMapping
-	public Page<DatosListadoMedicoDTO>  listadoDeMedicos(Pageable paginacion){
+	public Page<ResponseListadoMedico>  listadoDeMedicos( @PageableDefault(size=1) Pageable paginacion){
 		//return medicoRepository.findAll(paginacion).map(DatosListadoMedicoDTO::new) ; 
-		return medicoRepository.findByActivoTrue(paginacion).map(DatosListadoMedicoDTO::new) ; 
+		return medicoRepository.findByActivoTrue(paginacion).map(ResponseListadoMedico::new) ; 
 
 	} 
 	
